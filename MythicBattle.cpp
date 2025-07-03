@@ -70,8 +70,6 @@ void Entity::DamageTaken(int damage){			//intilized damagetaken for eh damage-ta
 	}
 }
 
-//----------------------------------------------------------------------		 PLAYER		  --------------------------------------------------------------------------------//
-
 class Player:public Entity{
 private:
 	int Ability;
@@ -118,8 +116,6 @@ void Player::SpecialMove(Entity& target){	//here i again did the same thing
 	
 }
 
-//----------------------------------------------------------------------		 ENEMY		  --------------------------------------------------------------------------------//
-
 class Enemy:public Entity{
 public:
 	Enemy(string name,int health, int damage , int defense);
@@ -131,8 +127,6 @@ void Enemy::Attack(Entity& target){ //similarly,we did here
 	cout <<"=>"<< getName() <<" attacks "<<target.getName()<<" for "<<getDamage()<<" damage!"<<endl;
 	target.DamageTaken(getDamage());
 }
-
-//----------------------------------------------------------------------		 MAIN FUNCTION		  --------------------------------------------------------------------------------//
 
 int main(){
 	string input;
@@ -192,11 +186,10 @@ do{
 	cout<<"Vitality: "<<enemies[Enemychoice - 1].getDefense()<<endl;
 	
 	//here i created objects for both classess 
-	Player& chosenplayer = players[Playerchoice - 1]; //[Playerchoice - 1] this to get the character from vector like(taking it and removing it from vector)
-	Enemy& chosenenemy = enemies[Enemychoice - 1];	//vector is flexible way h owever, could also do without vector
-	cout<<"\n				 "<<chosenplayer.getName()<<" VS "<<chosenenemy.getName()<<endl; //show-down
+	Player& chosenplayer = players[Playerchoice - 1]; 
+	Enemy& chosenenemy = enemies[Enemychoice - 1];
+	cout<<"\n				 "<<chosenplayer.getName()<<" VS "<<chosenenemy.getName()<<endl;
 	
-	//can also used do-while...just wanted to try something different
 	//when the health of any or both of the entities get to zero the loop will terminate
 	while(chosenplayer.getHealth()>0 && chosenenemy.getHealth()>0){
 		int action;
